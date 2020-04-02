@@ -55,4 +55,6 @@ $('#reg_order').on('click', function(){
 			};
 		}
 	})
+	$('#form_auto').css('transform','rotateY(0deg)');
+	$('#form_reg').css('transform','rotateY(90deg)');
 })

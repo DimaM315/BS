@@ -45,22 +45,23 @@ class PageController extends BaseController
 
 	public function UserPageAction()
 	{
-		if (is_numeric($_GET['userID'])){
+		if (is_numeric($_GET['userID'])  and $_GET['userID'] > 0){
 			$user = new GetUserModel($_GET['userID']);
-
-			echo $this->render('view/userPage.php',[
-					'FI' => $user->FI,
-					'my_Login' => $this->person->nickname,
-					'check_friend' => $user->check_friend(),
-					'check_yourPage' => $user->check_yourPage(),
-					'auto' => $this->auto,
-					'contacts' => $user->getContactsList(),
-					'nickname' => $user->nickname,
-					'articles' => $user->getArticlesList()
-				]);
 		}else{
-			echo 'id_invalid';
+			$db = new \PDO("mysql:host=localhost;dbname=BS_compilation", "root", "");
+			$db->exec("SET NAMES UTF8");
+			$user = new GetUserModel(GetUserModel::getIdByNickname($db, $_GET['userID']));
 		}
+		echo $this->render('view/userPage.php',[
+				'FI' => $user->FI,
+				'my_Login' => $this->person->nickname,
+				'check_friend' => $user->check_friend(),
+				'check_yourPage' => $user->check_yourPage(),
+				'auto' => $this->auto,
+				'contacts' => $user->getContactsList(),
+				'nickname' => $user->nickname,
+				'articles' => $user->getArticlesList()
+			]);
 	}
 
 	public function ArticlePageAction()

@@ -59,6 +59,7 @@ function messActiveHide(){
 
 getArticles(1);
 getArticles(2);
+getArticles(3);
 function getArticles(id){
 	$.ajax({
 		url:'articles.php',

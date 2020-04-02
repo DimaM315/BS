@@ -7,7 +7,7 @@ $('#addCont').on('click', function(){
 			report: getUrlVars()["userID"]
 		},
 		success:function(response, status){
-			alert('Контакт успешно добавлен');
+			alert('Контакт успешно добавлен'+response);
 			window.location.href = "http://bs?userID=" + getUrlVars()["userID"];
 		}
 	})

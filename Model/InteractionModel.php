@@ -15,9 +15,13 @@ class InteractionModel extends BaseModel
 
 	}	
 
-	public function add_contact($id)
+	public function add_contact($id_or_nick)
 	{
 		$db = $this->connectBd();
+
+		if(!is_numeric($id_or_nick)){
+			$id_or_nick = GetUserModel::getIdByNickname($db, $id_or_nick);
+		}
 
 		$query = $db -> prepare("SELECT friends FROM `users` WHERE `nickname`= :nickname");
 		$query->execute(['nickname'=> $_COOKIE['nickname']]);
@@ -25,7 +29,7 @@ class InteractionModel extends BaseModel
 
 		$query = $db -> prepare("UPDATE `users` SET `friends`=:contacts WHERE `nickname` = :nickname");
 		$query->execute([
-			'contacts'=> $contacts['friends'] . '-!!!-' . $id, 
+			'contacts'=> $contacts['friends'] . '-!!!-' . $id_or_nick, 
 			'nickname' => $_COOKIE['nickname']
 		]);
 	}	

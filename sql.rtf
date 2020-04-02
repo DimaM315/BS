@@ -1,0 +1,24 @@
+	таблица дл€ сообщений -
+
+CREATE TABLE `»ћя`.`messages` ( `date` DATE NOT NULL ,  `who` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  `text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+	таблица дл€ персональной информации -
+
+CREATE TABLE `»ћя`.`information` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT ,  `nickname` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  `name` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  `surname` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  `dt_reg` DATE NOT NULL ,  `password` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,    PRIMARY KEY  (`id`),    UNIQUE  (`nickname`)) ENGINE = InnoDB;
+
+	таблица дл€ "моих работ" - 
+
+CREATE TABLE `»ћя`.`my-work` ( `title` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `text` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ) ENGINE = InnoDB;
+
+	таблица дл€ "моих любимых книг" - 
+
+CREATE TABLE `»ћя`.`fav-book` ( `title` VARCHAR(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `opinion` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ) ENGINE = InnoDB;
+
+	таблица дл€ "друзей" - 
+
+CREATE TABLE `»ћя`.`friends` ( `id` INT(11) UNSIGNED NOT NULL , `nickname` VARCHAR(30) NOT NULL , UNIQUE (`id`), UNIQUE (`nickname`)) ENGINE = InnoDB;
+
+	таблица дл€ понравившегос€ - 
+
+CREATE TABLE `»ћя`.`likes` ( `id` INT(11) UNSIGNED NOT NULL , `title` VARCHAR(30) NOT NULL , UNIQUE (`id`), UNIQUE (`title`)) ENGINE = InnoDB;
+

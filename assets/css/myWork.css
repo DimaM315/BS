@@ -11,6 +11,9 @@ a{
 	display: block;
 	color:white;
 }
+.a_post{
+	color:black;
+}
 textarea{
 	width: 100%;
 	height: 300px;

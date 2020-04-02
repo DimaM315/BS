@@ -39,15 +39,6 @@ function changeOpacity(selector, value){
 
 
 
-
-
-
-
-
-
-
-
-
 $('.message').bind('click', messActiveShow);
 
 
@@ -62,8 +53,6 @@ function messActiveHide(){
 	$(this).removeClass().addClass('message');
 	$('.message').bind('click', messActiveShow); // класс message перезаписался у элемента, поэтому повторное назначение фун-и
 }
-
-
 
 
 
@@ -83,7 +72,8 @@ function getArticles(id){
 			$('#feed').prepend(
 				$('<div>',{
 					class:'article',
-					html:'<h2>'+article.title+'</h2><div class="article_text">'+article.text+'<hr><em>Автор:'+article.author+'</em></div>'
+					html:'<h2>'+article.title+'</h2><div class="article_text">'+article.text+
+					'<hr><em>Автор:</em><a href="\\?userID='+article.author+'" class="a_post">'+article.author+'</a></div>'
 				})
 			);
 		}
